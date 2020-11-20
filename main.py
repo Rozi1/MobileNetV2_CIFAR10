@@ -27,7 +27,7 @@ torch.cuda.set_device(args.local_rank)
 
 # Init Model
 print("Initialize Model...")
-net = EfficientNetB0().cuda()
+net = MobileNetV2().cuda()
 net = nn.SyncBatchNorm.convert_sync_batchnorm(net)
 net = torch.nn.parallel.DistributedDataParallel(
     net, device_ids=[args.local_rank], output_device=args.local_rank)
